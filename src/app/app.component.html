@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <th>Номер</th>
+    <th>Дата урока</th>
+    <th>Тема урока</th>
+    <th>Домашнее задание</th>
+    <th>Примечание</th>
+  </tr>
+  <tr app-lesson-record *ngFor="let l of lessonRecords" [lessonRecord]="l"></tr>
+</table>
