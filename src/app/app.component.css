@@ -2,3 +2,11 @@ table, tr, th, td {
     border-style: solid;
     border-color: black;
 }
+
+button {
+    margin-left: 10px;
+}
+
+.rating {
+    margin-top: 30px;
+}

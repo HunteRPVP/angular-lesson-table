@@ -6,5 +6,32 @@
     <th>Домашнее задание</th>
     <th>Примечание</th>
   </tr>
-  <tr app-lesson-record *ngFor="let l of lessonRecords" [lessonRecord]="l"></tr>
+  <tr app-lesson-record (delete)="deleteLessonRecord($event.toString())" *ngFor="let l of lessonRecords" [lessonRecord]="l"></tr>
+  <tr>
+      <td>{{lessonRecords[lessonRecords.length - 1].num + 1}}</td>
+      <td><input #date type="text" placeholder = "__.__.____"></td>
+      <td><input #theme type="text"></td>
+      <td><input #hw type="text"></td>
+      <td><input #note type="text">
+        <button type="button" 
+        (click) = "lessonRecordsService.addLessonRecordSep(lessonRecords.length + 1,date.value,theme.value,hw.value,note.value)">Добавить запись</button>
+      </td>
+  </tr>
+</table>
+
+<table class = 'rating'>
+  <tr>
+    <th>ФИО обучающегося</th>
+    <th>Оценки</th>
+    <th>Cредний балл округление до 2-го разряда</th>
+    <th>Округлённый средний балл до целого</th>
+  </tr>
+  <tr app-rating [lessonRecords]=lessonRecords *ngFor="let r of ratingRecords" [rating]="r"></tr>
+  <tr>
+    <td><input #fio type="text"></td>
+    <td>
+      <button type="button" 
+        (click) = "ratingRecordsService.addRatingRecordSep(fio.value)">Добавить запись</button>
+    </td>
+</tr>
 </table>

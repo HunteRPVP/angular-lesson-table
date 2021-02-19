@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: '[app-lesson-record]',
@@ -15,6 +15,9 @@ export class LessonRecordComponent implements OnInit {
 
   @Input()
   lessonRecord: LessonRecordComponent | undefined;
+
+  @Output()
+  delete: EventEmitter<string> = new EventEmitter();
 
   constructor() { 
   }
@@ -48,6 +51,10 @@ export class LessonRecordComponent implements OnInit {
     this.setTheme(theme);
     this.setHW(hw);
     this.setNote(note);
+  }
+
+  deleteMe() {
+    this.delete.emit(this.lessonRecord.num.toString());
   }
 
 }
