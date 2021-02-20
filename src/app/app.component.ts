@@ -38,4 +38,15 @@ export class AppComponent {
       console.log(this.ratingRecords[i].ratings);
     }
   }
+
+  deleteRatingRecord(fio: string) {
+    var index = 0;
+
+    for (var i = 0; i < this.ratingRecords.length; i++) {
+      if (this.ratingRecords[i].fio == fio)
+        index = i;
+    }
+
+    this.ratingRecords.splice(index , 1);
+  }
 }

@@ -34,7 +34,7 @@
     <th>Cредний балл округление до 2-го разряда</th>
     <th>Округлённый средний балл до целого</th>
   </tr>
-  <tr app-rating [lessonRecords]=lessonRecords *ngFor="let r of ratingRecords" [rating]="r"></tr>
+  <tr app-rating (delete)="deleteRatingRecord($event.toString())" [lessonRecords]=lessonRecords *ngFor="let r of ratingRecords" [rating]="r"></tr>
   <tr>
     <td><input #fio type="text"></td>
     <td>

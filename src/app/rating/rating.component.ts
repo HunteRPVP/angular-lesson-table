@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { LessonRecordComponent } from '../lesson-record/lesson-record.component';
 
 @Component({
@@ -14,11 +14,14 @@ export class RatingComponent implements OnInit {
   avgRound: number = 0;
   avgRoundInt: number = 0;
 
-   @Input()
+  @Input()
   lessonRecords: LessonRecordComponent[] = [];
 
   @Input()
   rating: RatingComponent | undefined;
+
+  @Output()
+  delete: EventEmitter<string> = new EventEmitter();
 
   constructor() { 
     this.rating?.createRatingRecord;
@@ -59,6 +62,10 @@ export class RatingComponent implements OnInit {
     this.rating.ratings[lNum-1] = parseInt(changedRating);
     this.rating.setAvgRound();
     this.rating.setAvgRoundInt();
+  }
+
+  deleteMe() {
+    this.delete.emit(this.rating.fio);
   }
 
 }
