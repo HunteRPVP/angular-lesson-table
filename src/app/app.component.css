@@ -1,6 +1,7 @@
 table, tr, th, td {
     border-style: solid;
     border-color: black;
+    text-align: center;
 }
 
 button {
